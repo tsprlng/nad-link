@@ -1,21 +1,29 @@
+import signal
+
+# Catch ^C (SIGINT) and handle politely
+carryOn = True
+def sigint_handler(signal, frame):
+  global carryOn
+  carryOn = False
+signal.signal(signal.SIGINT, sigint_handler)
+
 import RPi.GPIO as g
 import time
 import sys
-import signal
+import os
 import atexit
 from yaml import load as yaml
 
 OutPin = 7
 
-cfg = yaml(file('config.yml','r'))
-
-g.setmode(g.BOARD)
-g.setup(OutPin, g.OUT, initial=True)
-
 def cleanup():
   g.cleanup(OutPin)
 atexit.register(cleanup)
 
+g.setmode(g.BOARD)
+g.setup(OutPin, g.OUT, initial=True)
+
+cfg = yaml(file('config.yml','r'))
 mode, cmd = cfg[sys.argv[1]]
 hold = mode.lower() == 'hold'
 
@@ -27,6 +35,9 @@ def send(bit):
   time.sleep(0.00056)
   pin(True)
   time.sleep(0.00169 if bit else 0.00056)
+
+if not carryOn:
+  exit(0)
 
 # Send preamble
 pin(False)
@@ -49,13 +60,6 @@ time.sleep(0.04202)
 
 # Send repeats until ^C in case of hold commands
 if hold:
-  carryOn = True
-
-  def sigint_handler(signal, frame):
-    global carryOn
-    carryOn = False
-  signal.signal(signal.SIGINT, sigint_handler)
-
   while carryOn:
     pin(False)
     time.sleep(0.009)
