@@ -23,7 +23,7 @@ atexit.register(cleanup)
 g.setmode(g.BOARD)
 g.setup(OutPin, g.OUT, initial=True)
 
-cfg = yaml(file('config.yml','r'))
+cfg = yaml(file(os.path.join(os.path.dirname(__file__), 'config.yml'),'r'))
 mode, cmd = cfg[sys.argv[1]]
 hold = mode.lower() == 'hold'
 
