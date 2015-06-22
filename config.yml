@@ -22,3 +22,10 @@ phono:    [once, 0xe13e916e]
 
 src-:     [once, 0xe13eb847]
 src+:     [once, 0xe13e58a7]
+
+# Personal source aliases
+#
+rad:      [once, 0xe13ebb44]
+sofa:     [once, 0xe13ed926]
+pi:       [once, 0xe13e43bc]
+mac:      [once, 0xe13ea15e]
