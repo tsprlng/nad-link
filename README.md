@@ -13,6 +13,12 @@ I like to do the following in my `.zshrc`:
 alias nad='python /opt/nad-link/nad-link.py'
 ````
 
+And on my other computers:
+````
+alias nad='ssh pi -t python /opt/nad-link/nad-link.py'
+````
+(The `-t` tells ssh to imitate a terminal so the SIGTERM from pressing `^C` is forwarded. This is helpful in order to kill the command properly, and thus stop volume changes at the intended moment before waking up the entire town.)
+
 Then it's just
 ````
 $ nad on
