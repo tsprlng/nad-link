@@ -27,23 +27,28 @@ cfg = yaml(file(os.path.join(os.path.dirname(__file__), 'config.yml'),'r'))
 mode, cmd = cfg[sys.argv[1]]
 hold = mode.lower() == 'hold'
 
+import ctypes
+libc = ctypes.CDLL('libc.so.6')
+def usleep(us):
+  libc.usleep(int(us))
+
 def pin(state):
   g.output(OutPin, state)
 
 def send(bit):
   pin(False)
-  time.sleep(0.00056)
+  usleep(560)
   pin(True)
-  time.sleep(0.00169 if bit else 0.00056)
+  usleep(1690 if bit else 560)
 
 if not carryOn:
   exit(0)
 
 # Send preamble
 pin(False)
-time.sleep(0.009)
+usleep(9000)
 pin(True)
-time.sleep(0.0045)
+usleep(4500)
 
 # Send the remote code
 for c in "{0:b}".format(cmd):
@@ -54,18 +59,18 @@ for c in "{0:b}".format(cmd):
 
 # Terminate the command
 pin(False)
-time.sleep(0.00056)
+usleep(560)
 pin(True)
-time.sleep(0.04202)
+usleep(42020)
 
 # Send repeats until ^C in case of hold commands
 if hold:
   while carryOn:
     pin(False)
-    time.sleep(0.009)
+    usleep(9000)
     pin(True)
-    time.sleep(0.00225)
+    usleep(2250)
     pin(False)
-    time.sleep(0.00056)
+    usleep(560)
     pin(True)
-    time.sleep(0.09819)
+    usleep(98190)
