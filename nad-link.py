@@ -14,6 +14,8 @@ import os
 import atexit
 from yaml import load as yaml
 
+from monotonic import monotonic
+
 OutPin = 7
 
 def cleanup():
@@ -27,10 +29,10 @@ cfg = yaml(file(os.path.join(os.path.dirname(__file__), 'config.yml'),'r'))
 mode, cmd = cfg[sys.argv[1]]
 hold = mode.lower() == 'hold'
 
-import ctypes
-libc = ctypes.CDLL('libc.so.6')
 def usleep(us):
-  libc.usleep(int(us))
+  goal = monotonic() + (us * 0.000001)
+  while monotonic() < goal:
+    pass
 
 def pin(state):
   g.output(OutPin, state)
