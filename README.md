@@ -29,6 +29,12 @@ $ nad down
 etc. etc.
 
 
+Daemon
+-----
+
+I've now included an example of a very simple daemon which listens for volume control events from my Bluetooth remote (or therefore, presumably, any keyboard's volume keys) and launches the script to do the relevant volumizing.
+
+
 Config
 -----
 
