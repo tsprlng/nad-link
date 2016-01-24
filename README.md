@@ -32,7 +32,7 @@ etc. etc.
 Config
 -----
 
-Just change the YAML. Alias remote codes however you like.
+Just change the config at the top of the script. Alias remote codes however you like.
 
 I'll point you again at [Morten Hustveit's page](http://www.ping.uio.no/~mortehu/nadlink/).
 

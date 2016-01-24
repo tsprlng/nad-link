@@ -12,7 +12,6 @@ import time
 import sys
 import os
 import atexit
-from yaml import load as yaml
 
 from monotonic import monotonic
 
@@ -25,7 +24,39 @@ atexit.register(cleanup)
 g.setmode(g.BOARD)
 g.setup(OutPin, g.OUT, initial=True)
 
-cfg = yaml(file(os.path.join(os.path.dirname(__file__), 'config.yml'),'r'))
+cfg = {  # This configuration is for my C350
+
+  'off':    ('once', 0xe13e13ec),
+  'on':     ('once', 0xe13ea45b),
+
+  'mute':     ('once', 0xe13e29d6),
+
+  # Volume
+  #
+  '-':      ('hold', 0xe13e31ce),
+  'down':     ('hold', 0xe13e31ce),
+  '+':      ('hold', 0xe13e11ee),
+  'up':       ('hold', 0xe13e11ee),
+
+  'monitor':  ('once', 0xe13eb14e),
+  'tape':     ('once', 0xe13e8976),
+  'tuner':    ('once', 0xe13ebb44),
+  'aux':      ('once', 0xe13ed926),
+  'video':    ('once', 0xe13e43bc),
+  'cd':       ('once', 0xe13ea15e),
+  'phono':    ('once', 0xe13e916e),
+
+  'src-':     ('once', 0xe13eb847),
+  'src+':     ('once', 0xe13e58a7),
+
+  # Personal source aliases
+  #
+  'rad':      ('once', 0xe13ebb44),
+  'sofa':     ('once', 0xe13ed926),
+  'pi':       ('once', 0xe13e43bc),
+  'mac':      ('once', 0xe13ea15e)
+}
+
 mode, cmd = cfg[sys.argv[1]]
 hold = mode.lower() == 'hold'
 
