@@ -8,6 +8,11 @@ from subprocess import Popen as popen
 import os.path
 import itertools
 
+import fcntl
+def eviocgrab(file_descriptor):  # linux call for super annoying exclusive access to input device
+    EVIOCGRAB = 1074021776
+    return fcntl.ioctl(file_descriptor, EVIOCGRAB, 1)
+
 CommandScript = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'nad-link.py')
 def cmd(cmd):
     return popen(['python', CommandScript, cmd])
@@ -66,6 +71,11 @@ if len(sys.argv) >= 2 and sys.argv[1] == 'print':  # i miss 'rescue nil'
 
 # open the keyboard event file in binary mode (whatever the hell that is)
 with open(EventFilePath, "rb") as in_file:
+    eviocgrab(in_file)
+      # exclusively grab the keyboard... so that XBMC can't exclusively grab the keyboard
+      # (thanks for that, XBMC.)
+      # remember to make sure this daemon starts before XBMC does!
+
     while True:
         event = in_file.read(EventStructSize)
         if not event:
