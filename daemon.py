@@ -61,7 +61,8 @@ def handle(type, code, value):
     elif code == 398:  # red button
         cmd('off').wait()
     elif code == 399:  # green button
-        cmd('on').wait()
+        cmd('pi').wait()  # switch source if on
+        cmd('on').wait()  # or switch on if not
     elif code >= 400 and code <= 401:  # yellow and blue!
         hyperion(code)
 
