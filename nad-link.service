@@ -1,0 +1,15 @@
+[Unit]
+Description=Fcking NAD LIIINKKK
+After=network.target hyperion.service
+Before=kodi.service
+# Being before kodi is vital in order to grab the remote media keys
+
+[Service]
+Environment="PATH=/opt/hyperion/bin"
+ExecStart=/root/nad-link/daemon.py
+WorkingDirectory=/root/nad-link
+Nice=-20
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

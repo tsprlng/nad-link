@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 OutPin = 7
 Config = {  # This configuration is for my C350
 

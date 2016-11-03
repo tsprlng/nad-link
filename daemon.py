@@ -13,9 +13,9 @@ def eviocgrab(file_descriptor):  # linux call for super annoying exclusive acces
     EVIOCGRAB = 1074021776
     return fcntl.ioctl(file_descriptor, EVIOCGRAB, 1)
 
-CommandScript = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'nad-link.py')
+CommandScript = './nad-link.py'
 def cmd(cmd):
-    return popen(['python', CommandScript, cmd])
+    return popen(['/usr/bin/python', CommandScript, cmd])
 
 EventFilePath = "/dev/input/event1"  # n.b. this is probably not always the right one
 
