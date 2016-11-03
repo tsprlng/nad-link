@@ -1,0 +1,12 @@
+{
+	"name" : "test",
+	"script" : "test.py",
+	"args" :
+	{
+		"rotationTime" : 60.0,
+		"color" : [255,0,0],
+		"hueChange" : 60.0,
+		"blobs" : 5,
+		"reverse" : false
+	}
+}
