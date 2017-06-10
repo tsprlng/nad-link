@@ -1,0 +1,15 @@
+A_FFWD          => e13e6a95
+A_PLAY          => e13eca35
+A_REC_PAUSE     => e13eaa55
+A_REV           => e13e2ad5
+A_REW           => e13eea15
+A_STOP          => e13e4ab5
+B_FFWD          => e13eb946
+B_PAUSE         => e13e9966
+B_PLAY          => e13e39c6
+B_REC_PAUSE     => e13e59a6
+B_RESET         => e13e09f6
+B_REV           => e13e7b84
+B_REW           => e13e7986
+B_STOP          => e13ef906
+MEMORY          => e13ea956
