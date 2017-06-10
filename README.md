@@ -42,6 +42,6 @@ Just change the config at the top of the script. Alias remote codes however you 
 
 ~~I'll point you again at [Morten Hustveit's page](http://www.ping.uio.no/~mortehu/nadlink/).~~ The page is gone, apparently forever.
 
-I've tried to convert the Crestron codes NAD provide and included them here in [the remote-codes directory](./remote-codes). Some of them have a trailing '3' for some reason which makes them longer than the normal 4 bytes. I don't have a NAD CD player so have no idea what's going on or what is correct.
+I've [tried to convert](https://github.com/tsprlng/nad-link/issues/4) the Crestron codes NAD provide and included them here in [the remote-codes directory](./remote-codes). Some of them have a trailing '3' for some reason which makes them longer than the normal 4 bytes. I don't have a NAD CD player so have no idea what's going on or what is correct.
 
 For different equipment just extract the right remote codes (it's easy to enter hex into YAML). Be aware that my script expects them in normal left-to-right reading endianness (whichever that is) so just take the binary and hexify it.
