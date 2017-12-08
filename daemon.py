@@ -17,7 +17,7 @@ CommandScript = './nad-link.py'
 def cmd(cmd):
     return popen(['/usr/bin/python', CommandScript, cmd])
 
-EventFilePath = "/dev/input/event1"  # n.b. this is probably not always the right one
+EventFilePath = "/dev/input/bt-remote"
 
 EventStructFormat = 'llHHI'  # long, long, unsigned short, unsigned short, unsigned int
 EventStructSize = struct.calcsize(EventStructFormat)

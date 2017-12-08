@@ -1,0 +1,6 @@
+# This file lives in /etc/udev/rules.d -- then `systemctl restart udev`!
+# This will cause NAD-LINK daemon to start when remote receiver is connected, by use of SYSTEMD_WANTS
+# It also provides the consistent symlink /dev/input/bt-remote to listen to events on
+# This is also usable as a systemd unit dependency in a slightly mangled form
+#
+SYMLINK=="input/by-id/usb-BTC_USB_Multimedia_Cordless_Keyboard-if01-event-mouse", SYMLINK+="input/bt-remote", TAG+="systemd", ENV{SYSTEMD_WANTS}="nad-link.service"

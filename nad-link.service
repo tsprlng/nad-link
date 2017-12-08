@@ -1,6 +1,12 @@
 [Unit]
 Description=Fcking NAD LIIINKKK
-After=network.target hyperion.service
+
+# This file lives in /etc/systemd/system -- then `systemctl daemon-reload`
+
+After=network.target hyperion.service dev-input-bt\x2dremote.device
+BindsTo=dev-input-bt\x2dremote.device
+# This horrible string is the name of the bluetooth remote as defined in my udev rule
+
 Before=kodi.service
 # Being before kodi is vital in order to grab the remote media keys
 
