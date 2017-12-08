@@ -5,7 +5,7 @@ Description=Fcking NAD LIIINKKK
 
 After=network.target hyperion.service dev-input-bt\x2dremote.device
 BindsTo=dev-input-bt\x2dremote.device
-# This horrible string is the name of the bluetooth remote as defined in my udev rule
+# This horrible string is systemd's mangled impression of the bluetooth remote's symlink as defined in my udev rule
 
 Before=kodi.service
 # Being before kodi is vital in order to grab the remote media keys
