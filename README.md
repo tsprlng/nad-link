@@ -35,6 +35,12 @@ Daemon
 I've now included an example of a very simple daemon which listens for volume control events from my Bluetooth remote (or therefore, presumably, any keyboard's volume keys) and launches the script to do the relevant volumizing.
 
 
+Futility
+--------
+
+It's been pointed out that I could have just used `lirc` and saved a lot of effort. This is most likely a correct observation, but by doing that I wouldn't have learned anything, and would have probably just spent time getting annoyed by boring problems configuring it to use GPIO. Too much like work! So no complaining from me.
+
+
 Config
 -----
 
